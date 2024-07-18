@@ -1,0 +1,23 @@
+{
+  "testing": {
+    "TELEGRAM_BOT_API_TOKEN": "1643288350:AAHD0GVM7wF8nuNBLp-ZNTPSQeF2vnU8rVE",
+    "OPEN_ACCASS_TO_BOT": 1,
+    "DATABASE_INFO": {
+      "username": "root",
+      "password": "",
+      "db_name": "prova_bot",
+      "db_host": ""
+    }
+  },
+
+  "production": {
+    "TELEGRAM_BOT_API_TOKEN": "1643288350:AAHD0GVM7wF8nuNBLp-ZNTPSQeF2vnU8rVE",
+    "OPEN_ACCASS_TO_BOT": 1,
+    "DATABASE_INFO": {
+      "username": "root",
+      "password": "",
+      "db_name": "cryptonotificationbot_new",
+      "db_host": ""
+    }
+  }
+}
