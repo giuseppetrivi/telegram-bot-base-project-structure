@@ -1,19 +1,38 @@
 (Sorry for my not perfect english)
 
+<!-- omit in toc -->
 # What is this?
 This is a set of folders and classes to start a generic Telegram bot project.
 <br>
 
+<!-- omit in toc -->
 # Documentation
 The code is commented a lot, so the information about every specific class is into the code. Here I will describe only some parts of the project.
 
-This is a UML diagram that explain the structure of the classes:<br>
+This is a UML diagram that explain the structure of the classes:
+
 ![uml_diagram_of_project](bot-project-uml.png)
 
-Index of paragraphs:<br>
-!!! [Devo fare un indice, quindi devo ordinare tutte le parti della documentazione]
+**Index of paragraphs**:
+<!-- TOC start -->
+
+- [Folder structure](#folder-structure)
+- [Code style](#code-style)
+- [Libraries installed](#libraries-installed)
+  - [Class `TelegramBotApiCustom`](#class-telegrambotapicustom)
+- [List of all example classes or editable classes](#list-of-all-example-classes-or-editable-classes)
+- [Autoloaders](#autoloaders)
+- [Class `ConfigurationInfo`](#class-configurationinfo)
+- [The `hook.php` file](#the-hookphp-file)
+- [Authorization rules](#authorization-rules)
+- [Class `BaseEntity`](#class-baseentity)
+- [Classes of `view/` folder](#classes-of-view-folder)
+- [About processes](#about-processes)
+
+<!-- TOC end -->
 <br>
 
+<!-- TOC --><a name="folder-structure"></a>
 ## Folder structure
 For the structure i've been ispirated to the MVC architecture logic.<br>
 
@@ -29,6 +48,7 @@ For the structure i've been ispirated to the MVC architecture logic.<br>
 You can see the folders `entities/`, `view/` and `control/processes/` as the MVC folders.
 <br>
 
+<!-- TOC --><a name="code-style"></a>
 ## Code style
 The coding style followed in the classes of this project (except the external library classes) is the following:
 
@@ -39,8 +59,8 @@ The coding style followed in the classes of this project (except the external li
 | **Attribute or variable**   | snake_case_variable |
 | **Method of function**      | camelCaseFunction   |
 | **Constants**               | CONSTANT_NAME       |
-<br>
 
+<!-- TOC --><a name="libraries-installed"></a>
 ## Libraries installed
 In this example base project I've installed two libraries:
 - [telegram-bot-sdk](https://github.com/irazasyed/telegram-bot-sdk): an unofficial Telegram bot API SDK
@@ -48,10 +68,12 @@ In this example base project I've installed two libraries:
 
 You can change this libraries with others with the same scope (interface with telegam bot api methods and interface with database), but I recommend anyway to use some library to handle this two fundamental aspect of the structure.
 
+<!-- TOC --><a name="class-telegrambotapicustom"></a>
 ### Class `TelegramBotApiCustom`
 Into `entities/tgbotapi_custom_interface/` folder I've created this class that extends the `Telegram\Bot\Api` class of the `telegram-bot-sdk` library. Obviously it's a fairly personal modification based on my more general needs.
 <br>
 
+<!-- TOC --><a name="list-of-all-example-classes-or-editable-classes"></a>
 ## List of all example classes or editable classes
 You can delete:
 - `control/processes/Main.php`: I recommend you to modify this class and don't delete it. Every bot need a Main process (ideally, the main menu);
@@ -69,6 +91,7 @@ Remind that when you modify `User` and `TelegramBotApiCustom` classes you need t
 In general when you want to make some modification take a look to the UML diagram.
 <br>
 
+<!-- TOC --><a name="autoloaders"></a>
 ## Autoloaders
 There are three autoloaders in this project, that you must call at the beginning of the webhook file (`hook.php`, in this example):
 - `vendor/autoload.php` is the one that upload the Composer's libraries;
@@ -78,6 +101,7 @@ There are three autoloaders in this project, that you must call at the beginning
 With this three autoloaders every class will be uploaded automatically during the run-time.
 <br>
 
+<!-- TOC --><a name="class-configurationinfo"></a>
 ## Class `ConfigurationInfo`
 The `ConfigurationInfo` class is a [singleton class](https://en.wikipedia.org/wiki/Singleton_pattern) tho handle the info into the file `config.json`.<br>
 You can change the `config.json` file as you wish and write the class methods accordingly.<br>
@@ -111,10 +135,12 @@ $_SystemConfig = ConfigurationInfo::setInstance();
 ```
 <br>
 
+<!-- TOC --><a name="the-hookphp-file"></a>
 ## The `hook.php` file
 This file is an example of a standard file to be used as "access point" of the Telegram bot requests. The URL of this file should be setted as webhook of the Telegram bot.
 <br>
 
+<!-- TOC --><a name="authorization-rules"></a>
 ## Authorization rules
 Into the `entities/authorization_rules/` folder there are the rules. What are the rules?<br>
 When a Telegram user send messages to the bot it might be useful to check some properties, for example if he is able to access or his legal permit has expired.
@@ -144,10 +170,12 @@ private function rulesToAdd() {
 The `UserAuthorization` class method `verifyAuthorization()` execute the `rule()` method of every instance you have added into `rulesToAdd()` method. So you can verify all the necessary rules and also get specific error messages for each one, in case some doesn't pass the check.
 <br>
 
+<!-- TOC --><a name="class-baseentity"></a>
 ## Class `BaseEntity`
 This class, by its `__call` magic method, provides the getters and setters of every attribute into the subclasses. Every new "entity" class should extend this class.
 <br>
 
+<!-- TOC --><a name="classes-of-view-folder"></a>
 ## Classes of `view/` folder
 The `MenuOptions` class is a class of constants only, which represent the bot's static commands. The constants should be the keys of the array `$valid_static_inputs` in each process class (depending on the class).
 ```php
@@ -183,6 +211,7 @@ $_Bot->sendMessage([
 ```
 <br>
 
+<!-- TOC --><a name="about-processes"></a>
 ## About processes
 An exhaustive description of processes is into [control/processes.md](control/processes.md) file. There is also an article on my blog [here]()
 <br>
