@@ -11,7 +11,7 @@ The code is commented a lot, so the information about every specific class is in
 
 This is a UML diagram that explain the structure of the classes:
 
-![uml_diagram_of_project](bot-project-uml.png)
+![uml_diagram_of_project](docs/bot-project-uml.png)
 
 **Index of paragraphs**:
 <!-- TOC start -->
